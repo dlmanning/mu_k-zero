@@ -4,7 +4,8 @@
   "description": "Sliders...",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "browser-test": "budo -l -o test/browser-test"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,9 @@
     "react-motion": "^0.4.3"
   },
   "devDependencies": {
+    "budo": "^8.2.2",
     "eslint": "^2.9.0",
+    "instyled": "^0.11.2",
     "react": "^15.0.2",
     "react-dom": "^15.0.2"
   }
