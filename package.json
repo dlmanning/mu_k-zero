@@ -1,0 +1,28 @@
+{
+  "name": "slider",
+  "version": "1.0.0",
+  "description": "Sliders...",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dlmanning/mu_k-zero.git"
+  },
+  "author": "David Manning",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dlmanning/mu_k-zero/issues"
+  },
+  "homepage": "https://github.com/dlmanning/mu_k-zero#readme",
+  "dependencies": {
+    "instyled": "^0.11.2",
+    "react-motion": "^0.4.3"
+  },
+  "devDependencies": {
+    "eslint": "^2.9.0",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2"
+  }
+}
