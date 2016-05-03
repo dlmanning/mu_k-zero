@@ -1,5 +1,5 @@
 {
-  "name": "slider",
+  "name": "sliding-windows",
   "version": "1.0.0",
   "description": "Sliders...",
   "main": "index.js",
@@ -8,16 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/dlmanning/mu_k-zero.git"
+    "url": "git+ssh://git@github.com/dlmanning/sliding-windows.git"
   },
   "author": "David Manning",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dlmanning/mu_k-zero/issues"
+    "url": "https://github.com/dlmanning/sliding-windows/issues"
   },
-  "homepage": "https://github.com/dlmanning/mu_k-zero#readme",
+  "homepage": "https://github.com/dlmanning/sliding-windows#readme",
   "dependencies": {
-    "instyled": "^0.11.2",
     "react-motion": "^0.4.3"
   },
   "devDependencies": {
