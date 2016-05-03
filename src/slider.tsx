@@ -10,31 +10,40 @@ import {
   OpaqueConfig
 } from 'react-motion'
 
+/*
+  <Container>
+    <Track>
+      [<ChildContainer>{child}</ChildContainer>]
+    </Track>
+  </Container>
+*/
+
 const ContainerStyles = {
   position: 'relative',
   height: '100%',
   width: '100%',
-  overflow: 'hidden',
+  overflowX: 'hidden',
   border: '1px solid black'
-}
-
-const ChildContainerStyles = {
-  display: 'flex',
-  justifyContent: 'center',
-  width: '100%',
-  height: '100%'
-}
-
-const SliderSpring: SpringHelperConfig = {
-  stiffness: 291,
-  damping: 29
 }
 
 const TrackStyle = {
   display: 'flex',
   position: 'relative',
   flexDirection: 'row',
-  height: '100%'
+  height: '100%',
+  overflowY: 'visible'
+}
+
+const ChildContainerStyles = {
+  display: 'flex',
+  justifyContent: 'center',
+  width: '100%',
+  height: '100%',
+}
+
+const SliderSpring: SpringHelperConfig = {
+  stiffness: 291,
+  damping: 29
 }
 
 interface TrackProps {

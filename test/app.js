@@ -21,8 +21,7 @@ const LetterBox = React.createFactory(instyled({
   height: '100%',
   width: '100%',
   fontSize: '7em',
-  alignSelf: 'center',
-  margin: 10
+  alignSelf: 'center'
 }))
 
 const colors = ['#c95e02', '#ffa714', '#f4e4ae', '#0082a5', '#013746']
@@ -87,7 +86,9 @@ class App extends Component {
       div({ style: { margin: '0 50', height: 250, width: 400 } },
         button({ onClick: this.toggle }, "Toggle"),
         h3(null, `(${this.state.index} / ${children.length})`),
-        Slider({ index: this.state.index }, children),
+        Slider({ index: this.state.index },
+          children
+         ),
         button({ onClick: this.back }, "Back"),
         button({ onClick: this.forward }, "Forward")
       )
