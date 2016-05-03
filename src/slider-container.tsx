@@ -35,7 +35,7 @@ export class SliderContainer extends Component<SliderContainerProps, SliderConta
       const indexInNext = newKeys.indexOf(currentKey)
 
       if (indexInNext !== -1) {
-        this.setState({ index: indexInNext })
+        nextState.index = indexInNext
       } else {
         const searchOrder: React.Key[] = []
         for (let i = oldKeys.length - 1; i > 0; i--) {
@@ -51,7 +51,7 @@ export class SliderContainer extends Component<SliderContainerProps, SliderConta
           }
         }
 
-        let nearestIndexInNext: number = -1
+        let nearestIndexInNext: number = 0
         while (
           searchOrder.length &&
           (nearestIndexInNext = newKeys.indexOf(searchOrder[searchOrder.length - 1])) === -1
