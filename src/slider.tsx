@@ -22,8 +22,7 @@ const ContainerStyles = {
   position: 'relative',
   height: '100%',
   width: '100%',
-  overflowX: 'hidden',
-  border: '1px solid black'
+  overflowX: 'hidden'
 }
 
 const TrackStyle = {
