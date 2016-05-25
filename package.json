@@ -1,7 +1,7 @@
 {
-  "name": "sliding-windows",
+  "name": "react-viewmaster",
   "version": "1.0.0",
-  "description": "Sliders...",
+  "description": "A react component that slides children in and our of view",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/dlmanning/sliding-windows.git"
+    "url": "git+ssh://git@github.com:dlmanning/react-viewmaster.git"
   },
   "author": "David Manning",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dlmanning/sliding-windows/issues"
+    "url": "https://github.com/dlmanning/react-viewmaster/issues"
   },
-  "homepage": "https://github.com/dlmanning/sliding-windows#readme",
+  "homepage": "https://github.com/dlmanning/react-viewmaster#readme",
   "dependencies": {
     "react-motion": "^0.4.3"
   },
