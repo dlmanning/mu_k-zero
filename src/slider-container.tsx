@@ -12,9 +12,13 @@ export interface SliderContainerState {
 }
 
 export class SliderContainer extends React.Component<SliderContainerProps, SliderContainerState> {
+  private _childrenHaveChanged: boolean
+
   constructor (props: SliderContainerProps) {
     super(props)
 
+    // Do the kids seem... different?
+    this._childrenHaveChanged = false
     this.state = {
       index: 0
     }
@@ -31,7 +35,9 @@ export class SliderContainer extends React.Component<SliderContainerProps, Slide
   }
 
   shouldComponentUpdate (nextProps: SliderContainerProps) {
-    return nextProps.index !== this.props.index
+    const shouldItUpdate = (nextProps.index !== this.props.index) || this._childrenHaveChanged
+    this._childrenHaveChanged = false
+    return shouldItUpdate
   }
 
   componentWillReceiveProps (nextProps: SliderContainerProps) {
@@ -39,11 +45,13 @@ export class SliderContainer extends React.Component<SliderContainerProps, Slide
     const newKeys = mapToElementKeys(nextProps.children)
     const nextState: SliderContainerState = { index: this.state.index }
 
+    this._childrenHaveChanged = childrenHaveChanged(oldKeys, newKeys)
+
     if (nextProps.index !== this.props.index) {
       nextState.index = nextProps.index
     }
 
-    if (childrenHaveChanged(oldKeys, newKeys)) {
+    if (this._childrenHaveChanged) {
       const { index } = this.state
       const currentKey = oldKeys[index]
       const indexInNext = newKeys.indexOf(currentKey)
@@ -77,6 +85,7 @@ export class SliderContainer extends React.Component<SliderContainerProps, Slide
       }
     }
 
+    this._childrenHaveChanged = true
     this.applyNextState(nextState)
   }
 
