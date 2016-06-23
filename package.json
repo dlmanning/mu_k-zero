@@ -4,7 +4,6 @@
   "description": "A react component that slides children in and our of view",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "browser-test": "budo -l -o test/browser-test"
   },
   "repository": {
@@ -18,9 +17,12 @@
   },
   "homepage": "https://github.com/dlmanning/react-viewmaster#readme",
   "dependencies": {
-    "react-motion": "^0.4.3"
+    "react-motion": "^0.4.4"
   },
   "devDependencies": {
+    "@types/react": "^0.14.21-alpha",
+    "@types/react-dom": "^0.14.8-alpha",
+    "@types/react-motion": "0.0.9-alpha",
     "budo": "^8.2.2",
     "eslint": "^2.9.0",
     "instyled": "^0.11.2",
