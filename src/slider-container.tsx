@@ -1,9 +1,9 @@
-import React = require('react')
-import { Children, Component } from 'react'
+import * as React from 'react'
 import { Slider } from './slider'
 
 export interface SliderContainerProps {
   index: number,
+  onIndexChange: (newIndex: number) => never,
   children?: any
 }
 
@@ -11,7 +11,7 @@ export interface SliderContainerState {
   index: number,
 }
 
-export class SliderContainer extends Component<SliderContainerProps, SliderContainerState> {
+export class SliderContainer extends React.Component<SliderContainerProps, SliderContainerState> {
   constructor (props: SliderContainerProps) {
     super(props)
 
@@ -20,10 +20,24 @@ export class SliderContainer extends Component<SliderContainerProps, SliderConta
     }
   }
 
+  applyNextState (next: SliderContainerState) {
+    if (this.state.index !== next.index) {
+      this.setState(next, () => {
+        if (next.index !== this.props.index) {
+          this.props.onIndexChange(next.index)
+        }
+      })
+    }
+  }
+
+  shouldComponentUpdate (nextProps: SliderContainerProps) {
+    return nextProps.index !== this.props.index
+  }
+
   componentWillReceiveProps (nextProps: SliderContainerProps) {
     const oldKeys = mapToElementKeys(this.props.children)
     const newKeys = mapToElementKeys(nextProps.children)
-    const nextState: SliderContainerState = { index: 0 }
+    const nextState: SliderContainerState = { index: this.state.index }
 
     if (nextProps.index !== this.props.index) {
       nextState.index = nextProps.index
@@ -63,12 +77,12 @@ export class SliderContainer extends Component<SliderContainerProps, SliderConta
       }
     }
 
-    this.setState(nextState)
+    this.applyNextState(nextState)
   }
 
   render () {
     return (
-      <Slider index={this.state.index}>
+      <Slider index={this.props.index}>
         {this.props.children}
       </Slider>
     )
@@ -76,7 +90,7 @@ export class SliderContainer extends Component<SliderContainerProps, SliderConta
 }
 
 function mapToElementKeys (children: React.ReactNode): React.Key[] {
-  return Children.toArray(children).reduce((accum, child) => {
+  return React.Children.toArray(children).reduce((accum, child) => {
     if (React.isValidElement(child)) {
       accum.push(child.key)
     }
@@ -84,7 +98,6 @@ function mapToElementKeys (children: React.ReactNode): React.Key[] {
   return accum
   }, [])
 }
-
 
 function childrenHaveChanged (oldKeys: React.Key[], newKeys: React.Key[]): boolean {
   if (oldKeys.length !== newKeys.length) {

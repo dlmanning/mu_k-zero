@@ -2,7 +2,7 @@
 
 const React = require('react')
 const instyled = require('instyled')
-const SliderComponent = require('../')
+const SliderComponent = require('../').SliderContainer
 
 const {
   DOM: {
@@ -59,6 +59,7 @@ class App extends Component {
   }
 
   setIndex (index) {
+    console.log(index)
     this.setState({ index })
   }
 
@@ -86,7 +87,7 @@ class App extends Component {
       div({ style: { margin: '0 50', height: 250, width: 400 } },
         button({ onClick: this.toggle }, "Toggle"),
         h3(null, `(${this.state.index} / ${children.length})`),
-        Slider({ index: this.state.index },
+        Slider({ index: this.state.index, onIndexChange: newIndex => this.setIndex(newIndex) },
           children
          ),
         button({ onClick: this.back }, "Back"),

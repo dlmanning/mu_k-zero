@@ -1,5 +1,5 @@
-import React = require('react')
-import { Children, Component, ReactElement, ReactNode, ReactChild, PropTypes } from 'react'
+import * as React from 'react'
+// import ReactDOM from "react-dom";
 
 import {
   TransitionMotion,
@@ -51,7 +51,7 @@ interface TrackProps {
   children?: any
 }
 
-function Track ({ width, left, children }: TrackProps): ReactElement<any> {
+function Track ({ width, left, children }: TrackProps): React.ReactElement<any> {
   const style = Object.assign({}, TrackStyle, {
     width: width + '%',
     left: left + '%'
@@ -69,15 +69,15 @@ export interface SliderProps {
   children?: any
 }
 
-export class Slider extends Component<SliderProps, any> {
+export class Slider extends React.Component<SliderProps, any> {
   
   static propTypes = {
-    index: PropTypes.number.isRequired,
-    children: PropTypes.arrayOf(PropTypes.element)
+    index: React.PropTypes.number.isRequired,
+    children: React.PropTypes.arrayOf(React.PropTypes.element)
   }
   
   private getTrackStyle = (): TransitionStyle[] => {
-    const numberOfChildren = Children.count(this.props.children)
+    const numberOfChildren = React.Children.count(this.props.children)
     const index = this.props.index || 0
 
     return [{
@@ -107,7 +107,7 @@ export class Slider extends Component<SliderProps, any> {
   }
 
   private renderChildren (): JSX.Element[] {
-    return Children.toArray(this.props.children).reduce((accum: ReactElement<any>[], child: ReactChild) => {
+    return React.Children.toArray(this.props.children).reduce((accum: React.ReactElement<any>[], child: React.ReactChild) => {
       if (React.isValidElement(child)) {
         accum.push(
           <div style={ChildContainerStyles} key={child.key}>
