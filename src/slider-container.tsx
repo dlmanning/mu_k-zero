@@ -4,7 +4,7 @@ import { Slider } from './slider'
 export interface SliderContainerProps {
   index: number,
   onIndexChange: (newIndex: number) => never,
-  children?: any
+  children?: React.ReactElement<any>[]
 }
 
 export interface SliderContainerState {
@@ -98,8 +98,8 @@ export class SliderContainer extends React.Component<SliderContainerProps, Slide
   }
 }
 
-function mapToElementKeys (children: React.ReactNode): React.Key[] {
-  return React.Children.toArray(children).reduce((accum: (string | number)[], child: React.ReactNode) => {
+function mapToElementKeys (children: React.ReactElement<any>[] = []): React.Key[] {
+  return React.Children.toArray(children).reduce((accum: React.Key[], child: React.ReactElement<any>) => {
     if (React.isValidElement(child) && child.key != null) {
       accum.push(child.key)
     } else {
