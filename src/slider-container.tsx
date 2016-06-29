@@ -99,9 +99,11 @@ export class SliderContainer extends React.Component<SliderContainerProps, Slide
 }
 
 function mapToElementKeys (children: React.ReactNode): React.Key[] {
-  return React.Children.toArray(children).reduce((accum, child) => {
-    if (React.isValidElement(child)) {
+  return React.Children.toArray(children).reduce((accum: (string | number)[], child: React.ReactNode) => {
+    if (React.isValidElement(child) && child.key != null) {
       accum.push(child.key)
+    } else {
+      throw new Error('SliderContainer: passed child either is not a ReactElement or has no key')
     }
   
   return accum
